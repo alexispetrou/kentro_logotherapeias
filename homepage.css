@@ -166,3 +166,57 @@ body {
 .content {
     padding: 20px;
 }
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    /* Κάνει το logo πιο μικρό σε κινητά */
+    .top-left-image {
+        width: 150px; /* Μείωση μεγέθους */
+    }
+
+    /* Κάνει τα links στο top-panel πιο μικρά */
+    .top-panel {
+        padding: 20px;
+    }
+
+    .top-panel a {
+        font-size: 20px; /* Μείωση γραμματοσειράς */
+        margin: 0 10px; /* Μικρότερο κενό μεταξύ των links */
+    }
+
+    /* Τα boxes γίνονται 100% πλάτος για να χωράνε σε κινητά */
+    .box-container {
+        flex-direction: column; /* Στοιβάζει τα boxes το ένα κάτω από το άλλο */
+        align-items: center;
+    }
+
+    .info-box, .deals-box {
+        width: 90%; /* Αυξάνει το πλάτος για να γεμίζει την οθόνη */
+        min-height: auto; /* Αφαιρεί το ελάχιστο ύψος για καλύτερη προσαρμογή */
+        padding: 15px;
+    }
+
+    /* Τα κείμενα να μην είναι τεράστια */
+    .content h1 {
+        font-size: 24px;
+    }
+
+    .content h2 {
+        font-size: 22px;
+    }
+
+    /* Βελτίωση εικόνων */
+    .image-container {
+        flex-direction: column; /* Οι εικόνες στοιβάζονται */
+        align-items: center;
+    }
+
+    .image-container .image {
+        max-width: 90%;
+        max-height: 150px;
+    }
+
+    /* Βελτίωση extra box */
+    .extra-box {
+        width: 90%;
+    }
+}
