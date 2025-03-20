@@ -1,8 +1,12 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
+    font-size: 14px; /* Μικρότερη γραμματοσειρά */
     margin: 0;
     padding: 0;
-    background: url('back1.jpg') no-repeat center center fixed, #f0f0f0;
+    background: url('back1.jpg') no-repeat center center fixed;
+    background-size: cover; /* Διασφαλίζει ότι η εικόνα καλύπτει όλο το viewport */
+    background-color: #f0f0f0; /* Εναλλακτικό background */
 }
 
 /* Logo Position */
@@ -10,33 +14,42 @@ body {
     position: absolute; /* Positions the image relative to the body */
     top: 5px;
     left: 5px;
-    width: 300px; /* Adjust the size of the logo */
-    height: auto;
+    width: 15%; /* Adjust size of the logo */
+    height: 10%;
 }
 
-/* Top Panel */
+/* Styling the top panel */
 .top-panel {
-    background-color: #3399ff; /* Color for the top panel */
-    padding: 40px;
+    background-color: #3399ff; /* Background color for the panel */
+    padding: 2%;
     text-align: center;
 }
 
+/* Styling links inside the top panel */
 .top-panel a {
-    color: #000080; /* Change this to any color you like */
-    text-decoration: none; /* Removes the underline */
-    font-weight: bold; /* Makes the text bold */
-    margin: 0 25px; /* Space between links */
-    font-size: 30px;
+    text-decoration: none; /* Removes underline */
+    margin: 0 15px; /* Spacing between links */
+    font-size: 23px; /* Μικρότερο font size */
+    color:#003399;
+    font-weight: bold; /* Makes text bold */
 }
 
+/* Hover effect for links in the top panel */
 .top-panel a:hover {
     text-decoration: underline;
 }
 
-/* Content Headings */
-.content h1, .content h2 {
-    color: #000080; /* Desired color */
-    text-align: center; /* Centers the text */
+/* Styling for main content headers */
+.content h1 {
+    color: #003399; /* Header color */
+    text-align: center;
+    font-size: 24px;
+}
+
+.content h2 {
+    text-align: center;
+    color: black;
+    font-size: 15px;
 }
 
 /* Box Container */
@@ -48,44 +61,42 @@ body {
     justify-content: center;
 }
 
-/* Ensuring all boxes have the same size */
+/* Ensuring all boxes have the same styling */
 .info-box, .deals-box, .extra-box {
-    width: 85%;
-    max-width: 400px; /* Ensuring the same max width */
-    height: 500px; /* Fixed height for consistency */
-    background-color: rgb(153, 204, 255,0.7);
+    width: 80%;
+    max-width: 400px;
+    min-height: 250px; /* Προσαρμοσμένο ύψος */
+    background-color: rgba(153, 204, 255, 0.7);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Distributes content evenly */
+    align-items: center;
 }
 
 /* Styling for Box Headers and Text */
 .info-box h2, .deals-box h2, .extra-box h2 {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 10px; /* Decreased bottom margin to reduce the gap */
-    /* You can also adjust the top margin if needed */
+    font-size: 1.2em; /* Μικρότερη γραμματοσειρά */
+    color: #003399;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 
 .info-box p, .deals-box p, .extra-box p {
-    font-size: 1em;
+    font-size: 0.9em; /* Μικρότερη γραμματοσειρά */
     color: #555;
-    flex-grow: 1; /* Makes sure text takes up the same space */
+    flex-grow: 1;
 }
 
 /* Image Styling Inside Boxes */
 .info-box .image, .deals-box .image, .extra-box .image {
-    width: 300px;
-    max-width: 1150px;
+    width: 100%;
+    max-width: 100%;
     height: auto;
-    max-height: 250px;
+    max-height: 200px;
     object-fit: cover;
-    align-items: center;
 }
 
 /* Image Container */
@@ -98,12 +109,62 @@ body {
 }
 
 .image-container .image {
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
-    max-height: 300px;
+    max-height: 200px;
 }
 
 /* Main Content Styling */
 .content {
-    padding: 20px;
+    padding: 2%;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    /* Κάνει το logo πιο μικρό σε κινητά */
+    .top-left-image {
+        width: 120px;
+    }
+
+    /* Κάνει τα links στο top-panel πιο μικρά */
+    .top-panel {
+        padding: 15px;
+    }
+
+    .top-panel a {
+        font-size: 18px;
+        margin: 0 8px;
+    }
+
+    /* Τα boxes γίνονται 100% πλάτος για να χωράνε σε κινητά */
+    .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-box, .deals-box, .extra-box {
+        width: 90%;
+        min-height: auto;
+        padding: 12px;
+    }
+
+    /* Τα κείμενα να μην είναι τεράστια */
+    .content h1 {
+        font-size: 20px;
+    }
+
+    .content h2 {
+        font-size: 18px;
+    }
+
+    /* Βελτίωση εικόνων */
+    .image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container .image {
+        max-width: 90%;
+        max-height: 150px;
+    }
 }
