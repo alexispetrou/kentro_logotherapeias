@@ -149,38 +149,74 @@ p {
     padding: 2%;
 }
 
-/* Mobile Styles */
 /* Mobile Styles – ΜΟΝΟ για οθόνες κάτω από 768px (κινητά) */
 @media screen and (max-width: 768px) {
     /* Μείωση logo */
     .top-left-image {
-        width: 80px;
-        height: auto;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 25%; /* Adjust size of the logo */
+        height: 10%;
     }
 
     /* Μείωση των links */
     .top-panel {
-        padding: 10px;
+        background-color: #3399ff;
+        padding: 5%;
+        text-align: right;
     }
 
     .top-panel a {
-        font-size: 16px;
+        text-decoration: none;
         margin: 0 5px;
+        font-size: 15px;
+        color: #003399;
+        font-weight: bold;
     }
 
-    /* Τα boxes γίνονται 100% πλάτος */
-    .box-container {
+    /* Διατήρηση των boxes δίπλα-δίπλα */
+   
+
+    /* .info-box */
+    .info-box {
+        width: 30%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
+        max-width: 50%;
+        min-height: 30%;
+        height: 100%; /* Ορίζουμε σταθερό ύψος για να είναι τα boxes ίδια ύψη */
+        background-color: rgba(153, 204, 255, 0.7);
+        border-radius: 10px;
+        padding: 2%;
+        text-align: left;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+	.info-box .image{
+		width: 100%;
+		max-width: 100%;
+		height: 120%;
+		max-height: 150%;
+		object-fit: cover;
+	}
+    /* .deals-box */
+    .deals-box {
+        width: 30%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
+        max-width: 50%;
+        min-height: 30%;
+        height: 100%; /* Ορίζουμε το ίδιο ύψος με το info-box */
+        background-color: rgba(153, 204, 255, 0.7);
+        border-radius: 10px;
+        padding: 2%;
+        text-align: center;
+        box-sizing: border-box;
+        display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .info-box, .deals-box {
-        width: 90%;
-        min-height: auto;
-        padding: 12px;
-    }
-
-    /* Κείμενα μικρότερα */
+    /* Μείωση γραμματοσειρών */
     .content h1 {
         font-size: 20px;
     }
@@ -189,7 +225,7 @@ p {
         font-size: 18px;
     }
 
-    /* Βελτίωση εικόνων */
+    /* Βελτίωση εικόνας */
     .image-container {
         flex-direction: column;
         align-items: center;
