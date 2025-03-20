@@ -150,35 +150,37 @@ p {
 }
 
 /* Mobile Styles */
+/* Mobile Styles – ΜΟΝΟ για οθόνες κάτω από 768px (κινητά) */
 @media screen and (max-width: 768px) {
-    /* Κάνει το logo πιο μικρό σε κινητά */
+    /* Μείωση logo */
     .top-left-image {
-        width: 120px; /* Μείωση μεγέθους */
+        width: 80px;
+        height: auto;
     }
 
-    /* Κάνει τα links στο top-panel πιο μικρά */
+    /* Μείωση των links */
     .top-panel {
-        padding: 15px;
+        padding: 10px;
     }
 
     .top-panel a {
-        font-size: 18px; /* Μείωση γραμματοσειράς */
-        margin: 0 8px; /* Μικρότερο κενό μεταξύ των links */
+        font-size: 16px;
+        margin: 0 5px;
     }
 
-    /* Τα boxes γίνονται 100% πλάτος για να χωράνε σε κινητά */
+    /* Τα boxes γίνονται 100% πλάτος */
     .box-container {
-        flex-direction: column; /* Στοιβάζει τα boxes το ένα κάτω από το άλλο */
+        flex-direction: column;
         align-items: center;
     }
 
     .info-box, .deals-box {
-        width: 90%; /* Αυξάνει το πλάτος για να γεμίζει την οθόνη */
+        width: 90%;
         min-height: auto;
         padding: 12px;
     }
 
-    /* Τα κείμενα να μην είναι τεράστια */
+    /* Κείμενα μικρότερα */
     .content h1 {
         font-size: 20px;
     }
@@ -189,7 +191,7 @@ p {
 
     /* Βελτίωση εικόνων */
     .image-container {
-        flex-direction: column; /* Οι εικόνες στοιβάζονται */
+        flex-direction: column;
         align-items: center;
     }
 
