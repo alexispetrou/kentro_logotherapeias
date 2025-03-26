@@ -36,7 +36,7 @@ p {
     background-color: #3399ff; /* Background color for the panel */
     padding: 2%;
     text-align: center;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 }
 
 /* Styling links inside the top panel */
@@ -65,6 +65,11 @@ p {
     color: black;
     font-size: 15px;
 }
+.content h3 {
+    text-align: center-left;
+    color: black;
+    font-size: 15px;
+}
 
 /* Box container for flexible layout */
 .box-container {
@@ -77,8 +82,8 @@ p {
 
 /* Styling for info and deals boxes */
 .info-box, .deals-box {
-    width: 23%; /* Responsive width */
-    max-width: 27%;
+    width: 30%; /* Responsive width */
+    max-width: 33%;
     min-height: 10%;
     background-color: rgba(153, 204, 255, 0.7);
     border-radius: 10px;
@@ -88,11 +93,18 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-     box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 }
 
 /* Styling for headers inside boxes */
 .info-box h2, .deals-box h2 {
+    font-size: 1.2em; /* Μικρότερο font */
+    color: #003399;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.info-box h3, .deals-box h3 {
     font-size: 1.2em; /* Μικρότερο font */
     color: #003399;
     margin-bottom: 10px;
@@ -107,10 +119,10 @@ p {
 
 /* Ensuring images inside boxes are properly aligned */
 .info-box .image, .deals-box .image {
-    width: 100%;
-    max-width: 100%;
+    width: 50%;
+    max-width: 50%;
     height: auto;
-    max-height: 100%;
+    max-height: 50%;
     object-fit: cover;
 }
 
