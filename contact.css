@@ -23,7 +23,9 @@ body {
     background-color: #3399ff; /* Background color for the panel */
     padding: 2%;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
 }
+
 
 /* Styling links inside the top panel */
 .top-panel a {
