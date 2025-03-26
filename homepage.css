@@ -1,3 +1,4 @@
+
 /* General body styling */
 body {
     font-family: Arial, sans-serif; /* Sets the font style */
@@ -154,25 +155,28 @@ p {
     /* Μείωση logo */
     .top-left-image {
         position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 25%; /* Adjust size of the logo */
-        height: 10%;
+        top: 1%;
+        left: 38%;
+        width: 30%; /* Adjust size of the logo */
+        height: 7%;
     }
 
     /* Μείωση των links */
     .top-panel {
         background-color: #3399ff;
-        padding: 5%;
-        text-align: right;
+        padding: 7%;
+        text-align: center-left;
     }
 
     .top-panel a {
+		position: relative;
+		top: 25px;
         text-decoration: none;
-        margin: 0 5px;
+        margin: 2%;
         font-size: 15px;
         color: #003399;
         font-weight: bold;
+		
     }
 
     /* Διατήρηση των boxes δίπλα-δίπλα */
@@ -180,7 +184,7 @@ p {
 
     /* .info-box */
     .info-box {
-        width: 30%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
+        width: 50%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
         max-width: 50%;
         min-height: 30%;
         height: 100%; /* Ορίζουμε σταθερό ύψος για να είναι τα boxes ίδια ύψη */
@@ -202,7 +206,7 @@ p {
 	}
     /* .deals-box */
     .deals-box {
-        width: 30%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
+        width: 50%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
         max-width: 50%;
         min-height: 30%;
         height: 100%; /* Ορίζουμε το ίδιο ύψος με το info-box */
