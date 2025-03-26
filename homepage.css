@@ -152,6 +152,14 @@ p {
 
 /* Mobile Styles – ΜΟΝΟ για οθόνες κάτω από 768px (κινητά) */
 @media screen and (max-width: 768px) {
+	body {
+	    font-family: Arial, sans-serif; /* Sets the font style */
+	    font-size: 14px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
+	    margin: 0;
+	    padding: 0;
+	    background-size: cover; /* Ensures the image covers the entire viewport */
+	    background-color: #f0f0f0; /* Fallback background color */
+	}
     /* Μείωση logo */
     .top-left-image {
         position: absolute;
