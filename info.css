@@ -77,10 +77,10 @@ p {
 
 /* Styling for info and deals boxes */
 .info-box, .deals-box {
-    width: 37%; /* Responsive width */
-    max-width: 37%;
+    width: 50%; /* Responsive width */
+    max-width: 50%;
     min-height: 10%;
-    background-color: rgba(153, 204, 255, 0.7);
+    background-color: rgba(198, 201, 193,0.2);
     border-radius: 10px;
     padding: 2%;
     text-align: center;
