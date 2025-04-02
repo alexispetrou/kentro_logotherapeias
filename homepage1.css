@@ -2,7 +2,7 @@
 /* General body styling */
 body {
     font-family: Arial, sans-serif; /* Sets the font style */
-    font-size: 14px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
+    font-size: 9px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
     margin: 0;
     padding: 0;/
     background-size: cover; /* Ensures the image covers the entire viewport */
@@ -20,22 +20,20 @@ body {
     background-color: #3399ff;
     width: 100%;
     text-align: center;
-    padding: 5% 0; /* Χρησιμοποιούμε ποσοστά για προσαρμογή */
+    padding: 12% 0; /* Χρησιμοποιούμε ποσοστά για προσαρμογή */
 }
 
 .top-left-image {
     position: absolute; /* Positions the image relative to the body */
     top: 2%;
-    left: 38%;
-    width: 35%; /* Adjust size of the logo */
-    height: 22%;
+    left: 32%;
 }
 
 
 /* Μέγεθος του λογοτύπου */
 .top-panel img {
-    width: 22%; /* Adjust size of the logo */
-    height: 12%; */
+    width: 40%; /* Adjust size of the logo */
+    height: 7%; */
 }
 
 /* Navigation panel κάτω από το logo */
