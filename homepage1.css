@@ -116,5 +116,9 @@ body {
     padding: 2%;
 }
 
-
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: white !important;
+    }
+}
 
