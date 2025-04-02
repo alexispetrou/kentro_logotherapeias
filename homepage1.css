@@ -61,13 +61,13 @@ body {
 .content h1 {
     color: #003399; /* Header color */
     text-align: center;
-    font-size: 100%
+    font-size: 140%
 }
 
 .content h2 {
     text-align: center;
     color: black;
-    font-size: 75%
+    font-size: 100%
 }
 
 /* Box container for flexible layout */
@@ -81,8 +81,8 @@ body {
 
 /* Styling for info and deals boxes */
 .info-box, .deals-box {
-    width: 35%; /* Responsive width */
-    max-width: 40%;
+    width: 55%; /* Responsive width */
+    max-width: 55%;
     min-height: 10%;
     background-color: rgba(153, 204, 255, 0.7);
     border-radius: 10%;
@@ -105,7 +105,7 @@ body {
 
 /* Styling for paragraphs inside boxes */
 .info-box p, .deals-box p {
-    font-size: 0.9em; /* Μικρότερο font */
+    font-size: 1em; /* Μικρότερο font */
     color: #555;
 }
 
@@ -115,4 +115,6 @@ body {
 .content {
     padding: 2%;
 }
+
+
 
