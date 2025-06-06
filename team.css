@@ -1,219 +1,474 @@
-/* General body styling */
-body {
-    font-family: Arial, sans-serif; /* Sets the font style */
-    font-size: 14px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
+/* ===== MODERN AESTHETIC ===== */
+:root {
+    --deep-blue: #1a3a6e;
+    --vibrant-blue: #3a7bd5;
+    --warm-orange: #ff7a45;
+    --soft-teal: #00d2ff;
+    --light-cream: #f8f4e9;
+    --pure-white: #ffffff;
+    --dark-charcoal: #2a2a2a;
+    --box-shadow-intense: 0 8px 30px rgba(0, 0, 0, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
     margin: 0;
     padding: 0;
-    background: url('back1.jpg') no-repeat center center fixed; /* Background image */
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    background-color: #f0f0f0; /* Fallback background color */
+    box-sizing: border-box;
 }
 
-/* Μείωση γραμματοσειράς σε όλα τα headers */
-h1 {
-    font-size: 22px;
+html {
+    scroll-behavior: smooth;
 }
 
-h2 {
-    font-size: 16px;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-cream);
+    color: var(--dark-charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-p {
-    font-size: 13px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-/* Positioning the top-left image (logo) */
-.top-left-image {
-    position: absolute; /* Positions the image relative to the body */
-    top: 5px;
-    left: 5px;
-    width: 15%; /* Adjust size of the logo */
-    height: 10%;
+ul {
+    list-style: none;
 }
 
-/* Styling the top panel */
+/* Το γενικό .container παραμένει για το κεντράρισμα του κύριου περιεχομένου */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* ===== DYNAMIC NAVIGATION ===== */
 .top-panel {
-    background-color: #3399ff; /* Background color for the panel */
-    padding: 2%;
-    text-align: center;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--vibrant-blue) 100%);
+    box-shadow: var(--box-shadow-intense);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
 }
 
-/* Styling links inside the top panel */
+.top-panel .container {
+    max-width: 100%; /* Το container του top-panel να πιάνει όλο το πλάτος */
+    margin: 0; /* Μηδενίζουμε το margin για να κολλήσει στις άκρες του parent */
+    padding: 0 2rem; /* Εδώ βάζουμε το οριζόντιο padding για όλο το περιεχόμενο του top-panel */
+    justify-content: flex-start; /* Όλα τα στοιχεία να ξεκινούν από αριστερά */
+    gap: 3rem; /* Απόσταση μεταξύ λογοτύπου και nav-links */
+    flex-wrap: wrap; /* Για να πέφτουν κάτω σε μικρότερες οθόνες */
+}
+
+.top-panel .logo {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem; /* Η απόσταση μεταξύ των links */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .top-panel a {
-    text-decoration: none; /* Removes underline */
-    margin: 0 15px; /* Spacing between links */
-    font-size: 23px; /* Μικρότερο font size */
-    color:#003399;
-    font-weight: bold; /* Makes text bold */
+    color: var(--pure-white);
+    font-weight: 600;
+    padding: 1rem 0;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.05rem;
+    transition: var(--transition-smooth);
 }
 
-/* Hover effect for links in the top panel */
-.top-panel a:hover {
-    text-decoration: underline;
+.top-panel a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: var(--warm-orange);
+    transition: var(--transition-smooth);
 }
 
-/* Styling for main content headers */
-.content h1 {
-    color: #003399; /* Header color */
+.top-panel a:hover::before {
+    width: 100%;
+}
+
+.top-panel .active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: 4px solid var(--warm-orange);
+}
+
+/* ===== HERO WITH ANIMATED GRADIENT (Πράσινο) ===== */
+.hero {
+    background: linear-gradient(-45deg, #28a745, #20c997, #28a745); /* Το πράσινο gradient */
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: var(--pure-white);
+    padding: 5rem 0;
     text-align: center;
-    font-size: 24px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 400px;
 }
 
-.content h2 {
-    text-align: center;
-    color: black;
-    font-size: 15px;
-}
-.content h3 {
-    text-align: center-left;
-    color: black;
-    font-size: 15px;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-/* Box container for flexible layout */
+.hero h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ===== TEAM CONTENT STYLING ===== */
+.content {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
 .box-container {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    justify-content: center;
+    gap: 2rem;
+    margin: -3rem auto 5rem; /* Μετακινεί τα κουτιά ελαφρώς προς τα πάνω */
+    max-width: 1000px;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+    justify-content: center; /* Κεντράρει τα κουτιά στο container του */
 }
 
-/* Styling for info and deals boxes */
-.info-box, .deals-box {
-    width: 30%; /* Responsive width */
-    max-width: 33%;
-    min-height: 10%;
-    background-color: rgba(153, 204, 255, 0.7);
-    border-radius: 10px;
-    padding: 2%;
-    text-align: center;
-    box-sizing: border-box;
+.person-info-box, .team-details-box {
+    flex: 1;
+    min-width: 300px;
+    background: var(--pure-white);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: var(--box-shadow-intense);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-}
-
-/* Styling for headers inside boxes */
-.info-box h2, .deals-box h2 {
-    font-size: 1.2em; /* Μικρότερο font */
-    color: #003399;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.info-box h3, .deals-box h3 {
-    font-size: 1.2em; /* Μικρότερο font */
-    color: #003399;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-/* Styling for paragraphs inside boxes */
-.info-box p, .deals-box p {
-    font-size: 0.9em; /* Μικρότερο font */
-    color: #555;
-}
-
-/* Ensuring images inside boxes are properly aligned */
-.info-box .image, .deals-box .image {
-    width: 50%;
-    max-width: 50%;
-    height: auto;
-    max-height: 50%;
-    object-fit: cover;
-}
-
-/* Extra box styling */
-.extra-box {
-    width: 80%;
-    max-width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 2%;
     text-align: center;
-    margin-bottom: 2%;
 }
 
-/* Styling for extra box headers and paragraphs */
-.extra-box h2, .extra-box p {
-    font-size: 16px; /* Μικρότερο font */
-    color: #003399;
+/* Εφέ λάμψης για τα κουτιά */
+.person-info-box::before, .team-details-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Image container for flexible image layout */
-.image-container {
+/* Εφέ hover για τα κουτιά */
+.person-info-box:hover, .team-details-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.person-info-box h2, .team-details-box h2 {
+    font-size: 1.8rem;
+    color: var(--deep-blue);
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+.person-info-box .role {
+    font-size: 1.1rem;
+    color: var(--vibrant-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.person-info-box .person-image {
+    max-width: 180px;
+    border-radius: 50%; /* Για κυκλική εικόνα */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--soft-teal); /* Μικρό περίγραμμα */
+    transition: var(--transition-smooth);
+    z-index: 2;
+}
+
+.person-info-box .person-image:hover {
+    transform: scale(1.05);
+    border-color: var(--warm-orange);
+}
+
+.person-info-box .details {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--dark-charcoal);
+    text-align: center;
+    z-index: 2;
+}
+
+/* Στυλ για το team-details-box */
+.team-details-box ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: left; /* Ευθυγράμμιση λίστας αριστερά */
+    margin-bottom: 1.5rem;
+    z-index: 2;
+}
+
+.team-details-box ul li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem; /* Μέγεθος γραμματοσειράς για τα list items */
+    color: var(--dark-charcoal);
+    font-weight: 500;
+}
+
+.team-details-box ul li i {
+    color: var(--vibrant-blue); /* Χρώμα για το εικονίδιο του check */
+    font-size: 1.2em; /* Ελαφρώς μεγαλύτερο εικονίδιο */
+}
+
+.team-details-box ul li b {
+    color: var(--deep-blue); /* Έντονο χρώμα για τα bold κείμενα */
+}
+
+.team-details-box h3 {
+    font-size: 1.1rem;
+    color: var(--dark-charcoal);
+    line-height: 1.6;
+    margin-top: 1rem; /* Απόσταση από τη λίστα */
+    font-weight: 500;
+    z-index: 2;
+}
+
+
+/* ===== PULSING CTA BUTTON ===== */
+.cta-section {
+    background-color: var(--deep-blue);
+    padding: 4rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-section .container {
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cta-section h3 {
+    color: var(--pure-white);
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--warm-orange), #ff9a5a);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(255, 122, 69, 0.4);
+    transition: var(--transition-smooth);
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 122, 69, 0.6);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== GLASS MORPHISM FOOTER ===== */
+.main-footer {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.main-footer .container {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--vibrant-blue), var(--soft-teal));
+    color: white;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+    margin: 0 0.5rem;
+    transition: var(--transition-smooth);
+    font-size: 1.5rem;
 }
 
-.image-container .image {
-    max-width: 100%;
-    height: auto;
-    max-height: 200px;
+.social-links a:hover {
+    transform: translateY(-5px) rotate(10deg);
 }
 
-/* Content padding */
-.content {
-    padding: 2%;
-}
-
-/* Mobile Styles */
-@media screen and (max-width: 768px) {
-    /* Κάνει το logo πιο μικρό σε κινητά */
-    .top-left-image {
-        width: 120px; /* Μείωση μεγέθους */
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
     }
 
-    /* Κάνει τα links στο top-panel πιο μικρά */
-    .top-panel {
-        padding: 15px;
+    .tagline {
+        font-size: 1.3rem;
+    }
+
+    .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .person-info-box, .team-details-box {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .top-panel .container {
+        flex-direction: column; /* Εικόνα και links να πέφτουν κάτω σε μικρότερες οθόνες */
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem; /* Επαναφέρουμε το padding για μικρότερες οθόνες */
+    }
+
+    .top-panel .logo {
+        margin-bottom: 0.5rem; /* Μικρή απόσταση από τα links όταν είναι σε στήλη */
+    }
+
+    .nav-links {
+        justify-content: center; /* Κεντράρισμα των links */
+        width: 100%; /* Να πιάνουν όλο το πλάτος */
+        gap: 1rem; /* Μικρότερη απόσταση μεταξύ links */
+    }
+}
+
+@media (max-width: 768px) {
+    .top-panel .container {
+        padding: 1rem;
     }
 
     .top-panel a {
-        font-size: 18px; /* Μείωση γραμματοσειράς */
-        margin: 0 8px; /* Μικρότερο κενό μεταξύ των links */
+        padding: 0.8rem 0;
+        font-size: 0.9rem;
     }
 
-    /* Τα boxes γίνονται 100% πλάτος για να χωράνε σε κινητά */
-    .box-container {
-        flex-direction: column; /* Στοιβάζει τα boxes το ένα κάτω από το άλλο */
-        align-items: center;
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    .info-box, .deals-box {
-        width: 90%; /* Αυξάνει το πλάτος για να γεμίζει την οθόνη */
-        min-height: auto;
-        padding: 12px;
+    .hero {
+        padding: 4rem 0;
     }
 
-    /* Τα κείμενα να μην είναι τεράστια */
-    .content h1 {
-        font-size: 20px;
+    .hero h1 {
+        font-size: 2rem;
     }
 
-    .content h2 {
-        font-size: 18px;
+    .tagline {
+        font-size: 1.1rem;
     }
 
-    /* Βελτίωση εικόνων */
-    .image-container {
-        flex-direction: column; /* Οι εικόνες στοιβάζονται */
-        align-items: center;
+    .cta-section h3 {
+        font-size: 1.5rem;
     }
 
-    .image-container .image {
-        max-width: 90%;
-        max-height: 150px;
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
     }
 
-    /* Βελτίωση extra box */
-    .extra-box {
-        width: 90%;
+    .main-footer .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .person-info-box, .team-details-box {
+        padding: 1.5rem;
+    }
+
+    .person-info-box .person-image {
+        max-width: 150px;
+    }
+
+    .person-info-box .details, .team-details-box h3, .team-details-box ul li {
+        font-size: 0.9rem;
+    }
+
+    .top-panel a {
+        font-size: 0.8rem;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
     }
 }
