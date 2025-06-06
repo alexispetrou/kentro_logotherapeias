@@ -1,257 +1,376 @@
-
-/* General body styling */
-body {
-    font-family: Arial, sans-serif; /* Sets the font style */
-    font-size: 14px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
-    margin: 0;
-    padding: 0;
-    background: url('back1.jpg') no-repeat center center fixed; /* Background image */
-    background-size: cover; /* Ensures the image covers the entire viewport */
-    background-color: #f0f0f0; /* Fallback background color */
+/* ===== BASE STYLES ===== */
+:root {
+  --primary-color: #2a5c99;
+  --secondary-color: #4d8ae6;
+  --accent-color: #ff7e33;
+  --light-blue: #e6f0ff;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --dark-gray: #333333;
+  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-/* Μείωση γραμματοσειράς σε όλα τα headers */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-gray);
+  background-color: var(--light-gray);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('back1.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
 h1 {
-    font-size: 22px;
+  font-size: 2.5rem;
+  line-height: 1.2;
 }
 
 h2 {
-    font-size: 16px;
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 p {
-    font-size: 13px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-/* Positioning the top-left image (logo) */
-.top-left-image {
-    position: absolute; /* Positions the image relative to the body */
-    top: 5px;
-    left: 5px;
-    width: 15%; /* Adjust size of the logo */
-    height: 10%;
+/* ===== HEADER & NAVIGATION ===== */
+.main-header {
+  background-color: var(--white);
+  padding: 1rem 0;
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Styling the top panel */
+.logo {
+  height: 80px;
+  width: auto;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
 .top-panel {
-    background-color: #3399ff; /* Background color for the panel */
-    padding: 2%;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling links inside the top panel */
 .top-panel a {
-    text-decoration: none; /* Removes underline */
-    margin: 0 15px; /* Spacing between links */
-    font-size: 23px; /* Μικρότερο font size */
-    color:#003399;
-    font-weight: bold; /* Makes text bold */
+  color: var(--white);
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Hover effect for links in the top panel */
 .top-panel a:hover {
-    text-decoration: underline;
+  color: var(--accent-color);
 }
 
-/* Styling for main content headers */
-.content h1 {
-    color: #003399; /* Header color */
-    text-align: center;
-    font-size: 24px;
+.top-panel a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: var(--transition);
 }
 
-.content h2 {
-    text-align: center;
-    color: black;
-    font-size: 15px;
+.top-panel a:hover::after {
+  width: 100%;
 }
 
-/* Box container for flexible layout */
+.top-panel .active {
+  color: var(--accent-color);
+}
+
+.top-panel .active::after {
+  width: 100%;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: linear-gradient(135deg, rgba(42, 92, 153, 0.9) 0%, rgba(77, 138, 230, 0.9) 100%);
+  color: var(--white);
+  padding: 4rem 0;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  color: var(--white);
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 1.3rem;
+  font-weight: 300;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== CONTENT BOXES ===== */
 .box-container {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
 }
 
-/* Styling for info and deals boxes */
-.info-box, .deals-box {
-    width: 23%; /* Responsive width */
-    max-width: 27%;
-    min-height: 10%;
-    background-color: rgba(153, 204, 255, 0.7);
-    border-radius: 10px;
-    padding: 2%;
-    text-align: center;
-    box-sizing: border-box;
-    display: flex;
+.therapy-box, .disorders-box {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+}
+
+.therapy-box:hover, .disorders-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.box-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--light-blue);
+}
+
+.box-header i {
+  font-size: 2rem;
+  color: var(--accent-color);
+}
+
+.therapy-list, .disorders-list {
+  list-style: none;
+}
+
+.therapy-list li, .disorders-list li {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background-color: var(--light-blue);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition);
+}
+
+.therapy-list li:hover, .disorders-list li:hover {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.therapy-list li i, .disorders-list li i {
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.therapy-list li:hover i, .disorders-list li:hover i {
+  color: var(--white);
+}
+
+/* ===== CALL TO ACTION ===== */
+.cta-section {
+  text-align: center;
+  padding: 3rem 0;
+  background-color: var(--white);
+  margin: 3rem 0;
+  box-shadow: var(--box-shadow);
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: var(--transition);
+  box-shadow: 0 4px 10px rgba(255, 126, 51, 0.3);
+}
+
+.cta-button:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 126, 51, 0.4);
+}
+
+/* ===== FOOTER ===== */
+.main-footer {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.social-links a {
+  color: var(--white);
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media screen and (max-width: 768px) {
+  .top-panel {
     flex-direction: column;
     align-items: center;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-}
-
-/* Styling for headers inside boxes */
-.info-box h2, .deals-box h2 {
-    font-size: 1.2em; /* Μικρότερο font */
-    color: #003399;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-/* Styling for paragraphs inside boxes */
-.info-box p, .deals-box p {
-    font-size: 0.9em; /* Μικρότερο font */
-    color: #555;
-}
-
-/* Ensuring images inside boxes are properly aligned */
-.info-box .image, .deals-box .image {
+    padding: 1rem;
+  }
+  
+  .top-panel a {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    max-height: 100%;
-    object-fit: cover;
-}
-
-/* Extra box styling */
-.extra-box {
-    width: 80%;
-    max-width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 2%;
     text-align: center;
-    margin-bottom: 2%;
-}
-
-/* Styling for extra box headers and paragraphs */
-.extra-box h2, .extra-box p {
-    font-size: 16px; /* Μικρότερο font */
-    color: #003399;
-}
-
-/* Image container for flexible image layout */
-.image-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px;
     justify-content: center;
+  }
+  
+  .hero {
+    padding: 3rem 0;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+  }
+  
+  .therapy-box, .disorders-box {
+    min-width: 100%;
+  }
+  
+  .box-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cta-section {
+    padding: 2rem 1rem;
+  }
+  
+  .logo {
+    height: 60px;
+  }
 }
 
-.image-container .image {
-    max-width: 100%;
-    height: auto;
-    max-height: 200px;
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .therapy-list li, .disorders-list li {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
 }
 
-/* Content padding */
-.content {
-    padding: 2%;
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Styles – ΜΟΝΟ για οθόνες κάτω από 768px (κινητά) */
-@media screen and (max-width: 768px) {
-	body {
-	    font-family: Arial, sans-serif; /* Sets the font style */
-	    font-size: 14px; /* Μικραίνει το βασικό μέγεθος γραμματοσειράς */
-	    margin: 0;
-	    padding: 0;
-	    background-size: cover; /* Ensures the image covers the entire viewport */
-	    background-color: #f0f0f0; /* Fallback background color */
-	}
-    /* Μείωση logo */
-    .top-left-image {
-        position: absolute;
-        top: 1%;
-        left: 38%;
-        width: 30%; /* Adjust size of the logo */
-        height: 7%;
-    }
+.therapy-box, .disorders-box, .cta-section {
+  animation: fadeIn 0.6s ease-out forwards;
+}
 
-    /* Μείωση των links */
-    .top-panel {
-        background-color: #3399ff;
-        padding: 7%;
-        text-align: center-left;
-    }
+.disorders-box {
+  animation-delay: 0.2s;
+}
 
-    .top-panel a {
-		position: relative;
-		top: 25px;
-        text-decoration: none;
-        margin: 2%;
-        font-size: 15px;
-        color: #003399;
-        font-weight: bold;
-		
-    }
-
-    /* Διατήρηση των boxes δίπλα-δίπλα */
-   
-
-    /* .info-box */
-    .info-box {
-        width: 50%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
-        max-width: 50%;
-        min-height: 30%;
-        height: 100%; /* Ορίζουμε σταθερό ύψος για να είναι τα boxes ίδια ύψη */
-        background-color: rgba(153, 204, 255, 0.7);
-        border-radius: 10px;
-        padding: 2%;
-        text-align: left;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-	.info-box .image{
-		width: 100%;
-		max-width: 100%;
-		height: 120%;
-		max-height: 150%;
-		object-fit: cover;
-	}
-    /* .deals-box */
-    .deals-box {
-        width: 50%; /* Ελαφριά αλλαγή στο πλάτος για να χωράνε δίπλα-δίπλα */
-        max-width: 50%;
-        min-height: 30%;
-        height: 100%; /* Ορίζουμε το ίδιο ύψος με το info-box */
-        background-color: rgba(153, 204, 255, 0.7);
-        border-radius: 10px;
-        padding: 2%;
-        text-align: center;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Μείωση γραμματοσειρών */
-    .content h1 {
-        font-size: 20px;
-    }
-
-    .content h2 {
-        font-size: 18px;
-    }
-
-    /* Βελτίωση εικόνας */
-    .image-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .image-container .image {
-        max-width: 90%;
-        max-height: 150px;
-    }
-
-    /* Βελτίωση extra box */
-    .extra-box {
-        width: 90%;
-    }
+.cta-section {
+  animation-delay: 0.4s;
 }
