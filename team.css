@@ -124,7 +124,7 @@ ul {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 200px;
+    min-height: 400px;
 }
 
 @keyframes gradientBG {
@@ -149,7 +149,7 @@ ul {
     margin-top: 0.5rem;
 }
 
-/* ===== INFO BOX STYLING ===== */
+/* ===== TEAM CONTENT STYLING ===== */
 .content {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -158,17 +158,16 @@ ul {
 .box-container {
     display: flex;
     gap: 2rem;
-    margin: -3rem auto 5rem; /* Μετακινεί το κουτί ελαφρώς προς τα πάνω */
+    margin: -3rem auto 5rem; /* Μετακινεί τα κουτιά ελαφρώς προς τα πάνω */
     max-width: 1000px;
     padding: 0 2rem;
     flex-wrap: wrap;
-    justify-content: center; /* Κεντράρει το info-box στο container του */
+    justify-content: center; /* Κεντράρει τα κουτιά στο container του */
 }
 
-.info-box {
+.person-info-box, .team-details-box {
     flex: 1;
     min-width: 300px;
-    max-width: 800px; /* Μέγιστο πλάτος για το κείμενο */
     background: var(--pure-white);
     border-radius: 15px;
     padding: 2.5rem;
@@ -182,7 +181,8 @@ ul {
     text-align: center;
 }
 
-.info-box::before {
+/* Εφέ λάμψης για τα κουτιά */
+.person-info-box::before, .team-details-box::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -199,16 +199,86 @@ ul {
     z-index: 1;
 }
 
-.info-box:hover {
-    transform: translateY(-5px) scale(1.005);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+/* Εφέ hover για τα κουτιά */
+.person-info-box:hover, .team-details-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-.info-box p {
+.person-info-box h2, .team-details-box h2 {
+    font-size: 1.8rem;
+    color: var(--deep-blue);
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+.person-info-box .role {
     font-size: 1.1rem;
-    line-height: 1.8;
+    color: var(--vibrant-blue);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.person-info-box .person-image {
+    max-width: 180px;
+    border-radius: 50%; /* Για κυκλική εικόνα */
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 4px solid var(--soft-teal); /* Μικρό περίγραμμα */
+    transition: var(--transition-smooth);
+    z-index: 2;
+}
+
+.person-info-box .person-image:hover {
+    transform: scale(1.05);
+    border-color: var(--warm-orange);
+}
+
+.person-info-box .details {
+    font-size: 1rem;
+    line-height: 1.7;
     color: var(--dark-charcoal);
-    text-align: justify;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Στυλ για το team-details-box */
+.team-details-box ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: left; /* Ευθυγράμμιση λίστας αριστερά */
+    margin-bottom: 1.5rem;
+    z-index: 2;
+}
+
+.team-details-box ul li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem; /* Μέγεθος γραμματοσειράς για τα list items */
+    color: var(--dark-charcoal);
+    font-weight: 500;
+}
+
+.team-details-box ul li i {
+    color: var(--vibrant-blue); /* Χρώμα για το εικονίδιο του check */
+    font-size: 1.2em; /* Ελαφρώς μεγαλύτερο εικονίδιο */
+}
+
+.team-details-box ul li b {
+    color: var(--deep-blue); /* Έντονο χρώμα για τα bold κείμενα */
+}
+
+.team-details-box h3 {
+    font-size: 1.1rem;
+    color: var(--dark-charcoal);
+    line-height: 1.6;
+    margin-top: 1rem; /* Απόσταση από τη λίστα */
+    font-weight: 500;
     z-index: 2;
 }
 
@@ -309,7 +379,7 @@ ul {
         align-items: center;
     }
 
-    .info-box {
+    .person-info-box, .team-details-box {
         width: 90%;
         max-width: 500px;
     }
@@ -382,11 +452,15 @@ ul {
         font-size: 1rem;
     }
 
-    .info-box {
+    .person-info-box, .team-details-box {
         padding: 1.5rem;
     }
 
-    .info-box p {
+    .person-info-box .person-image {
+        max-width: 150px;
+    }
+
+    .person-info-box .details, .team-details-box h3, .team-details-box ul li {
         font-size: 0.9rem;
     }
 
