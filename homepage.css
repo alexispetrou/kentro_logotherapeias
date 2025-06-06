@@ -1,204 +1,145 @@
-/* ===== BASE STYLES ===== */
+/* ===== MODERN AESTHETIC ===== */
 :root {
-  --primary-color: #2a5c99;
-  --secondary-color: #4d8ae6;
-  --accent-color: #ff7e33;
-  --light-blue: #e6f0ff;
-  --white: #ffffff;
-  --light-gray: #f8f9fa;
-  --dark-gray: #333333;
-  --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s ease;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --deep-blue: #1a3a6e;
+  --vibrant-blue: #3a7bd5;
+  --warm-orange: #ff7a45;
+  --soft-teal: #00d2ff;
+  --light-cream: #f8f4e9;
+  --pure-white: #ffffff;
+  --dark-charcoal: #2a2a2a;
+  --box-shadow-intense: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.6;
-  color: var(--dark-gray);
-  background-color: var(--light-gray);
-  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--light-cream);
+  color: var(--dark-charcoal);
+  line-height: 1.7;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('back1.jpg') no-repeat center center;
-  background-size: cover;
-  opacity: 0.1;
-  z-index: -1;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* ===== TYPOGRAPHY ===== */
-h1, h2, h3, h4 {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-}
-
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-/* ===== HEADER & NAVIGATION ===== */
-.main-header {
-  background-color: var(--white);
-  padding: 1rem 0;
-  box-shadow: var(--box-shadow);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.logo {
-  height: 80px;
-  width: auto;
-  transition: var(--transition);
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
+/* ===== DYNAMIC NAVIGATION ===== */
 .top-panel {
-  display: flex;
-  justify-content: center;
-  background-color: var(--primary-color);
-  padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, var(--deep-blue) 0%, var(--vibrant-blue) 100%);
+  padding: 0;
+  box-shadow: var(--box-shadow-intense);
 }
 
 .top-panel a {
-  color: var(--white);
-  text-decoration: none;
-  margin: 0 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding: 0.5rem 0;
+  color: var(--pure-white);
+  font-weight: 600;
+  padding: 1.2rem 1.5rem;
   position: relative;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
-.top-panel a:hover {
-  color: var(--accent-color);
-}
-
-.top-panel a::after {
+.top-panel a::before {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
-  height: 2px;
-  background-color: var(--accent-color);
-  transition: var(--transition);
+  height: 4px;
+  background: var(--warm-orange);
+  transition: var(--transition-smooth);
 }
 
-.top-panel a:hover::after {
+.top-panel a:hover::before {
   width: 100%;
 }
 
 .top-panel .active {
-  color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
-.top-panel .active::after {
-  width: 100%;
-}
-
-/* ===== HERO SECTION ===== */
+/* ===== HERO WITH ANIMATED GRADIENT ===== */
 .hero {
-  background: linear-gradient(135deg, rgba(42, 92, 153, 0.9) 0%, rgba(77, 138, 230, 0.9) 100%);
-  color: var(--white);
-  padding: 4rem 0;
+  background: linear-gradient(-45deg, #3a7bd5, #00d2ff, #3a7bd5);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  color: var(--pure-white);
+  padding: 5rem 0;
   text-align: center;
-  margin-bottom: 2rem;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .hero h1 {
-  color: var(--white);
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  font-size: 3rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
 }
 
 .tagline {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
   max-width: 800px;
   margin: 0 auto;
+  opacity: 0.9;
 }
 
-/* ===== CONTENT BOXES ===== */
+/* ===== THERAPY CARDS WITH 3D EFFECT ===== */
 .box-container {
   display: flex;
-  justify-content: center;
   gap: 2rem;
-  margin: 3rem 0;
-  flex-wrap: wrap;
+  margin: -3rem auto 5rem;
+  max-width: 1200px;
+  padding: 0 2rem;
 }
 
 .therapy-box, .disorders-box {
   flex: 1;
-  min-width: 300px;
-  max-width: 500px;
-  background-color: var(--white);
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: var(--box-shadow);
-  transition: var(--transition);
+  background: var(--pure-white);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: var(--box-shadow-intense);
+  transform-style: preserve-3d;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.therapy-box::before, .disorders-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0)
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
 }
 
 .therapy-box:hover, .disorders-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
 .box-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--light-blue);
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .box-header i {
-  font-size: 2rem;
-  color: var(--accent-color);
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--vibrant-blue), var(--soft-teal));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1rem;
 }
 
 .therapy-list, .disorders-list {
@@ -206,171 +147,84 @@ p {
 }
 
 .therapy-list li, .disorders-list li {
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  background-color: var(--light-blue);
-  border-radius: 5px;
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--light-cream);
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  transition: var(--transition);
+  gap: 1rem;
+  transition: var(--transition-smooth);
+  border-left: 4px solid transparent;
 }
 
 .therapy-list li:hover, .disorders-list li:hover {
-  background-color: var(--secondary-color);
-  color: var(--white);
+  background-color: var(--pure-white);
+  border-left: 4px solid var(--warm-orange);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transform: translateX(5px);
 }
 
 .therapy-list li i, .disorders-list li i {
-  color: var(--primary-color);
-  transition: var(--transition);
+  font-size: 1.2rem;
+  color: var(--vibrant-blue);
 }
 
-.therapy-list li:hover i, .disorders-list li:hover i {
-  color: var(--white);
-}
-
-/* ===== CALL TO ACTION ===== */
+/* ===== PULSING CTA BUTTON ===== */
 .cta-section {
+  background-color: var(--deep-blue);
+  padding: 4rem 0;
   text-align: center;
-  padding: 3rem 0;
-  background-color: var(--white);
-  margin: 3rem 0;
-  box-shadow: var(--box-shadow);
+  margin-top: 3rem;
 }
 
 .cta-button {
   display: inline-block;
-  background-color: var(--accent-color);
-  color: var(--white);
-  padding: 1rem 2rem;
+  background: linear-gradient(45deg, var(--warm-orange), #ff9a5a);
+  color: white;
+  padding: 1.2rem 2.5rem;
   border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  transition: var(--transition);
-  box-shadow: 0 4px 10px rgba(255, 126, 51, 0.3);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(255, 122, 69, 0.4);
+  transition: var(--transition-smooth);
+  animation: pulse 2s infinite;
 }
 
 .cta-button:hover {
-  background-color: var(--primary-color);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(255, 126, 51, 0.4);
+  box-shadow: 0 15px 40px rgba(255, 122, 69, 0.6);
 }
 
-/* ===== FOOTER ===== */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* ===== GLASS MORPHISM FOOTER ===== */
 .main-footer {
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .social-links a {
-  color: var(--white);
-  background-color: rgba(255, 255, 255, 0.2);
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  display: flex;
+  background: linear-gradient(45deg, var(--vibrant-blue), var(--soft-teal));
+  color: white;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
+  margin: 0 0.5rem;
+  transition: var(--transition-smooth);
 }
 
 .social-links a:hover {
-  background-color: var(--accent-color);
-  transform: translateY(-3px);
-}
-
-/* ===== MOBILE RESPONSIVENESS ===== */
-@media screen and (max-width: 768px) {
-  .top-panel {
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-  }
-  
-  .top-panel a {
-    margin: 0.5rem 0;
-    padding: 0.5rem 1rem;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-  
-  .hero {
-    padding: 3rem 0;
-  }
-  
-  .hero h1 {
-    font-size: 2rem;
-  }
-  
-  .tagline {
-    font-size: 1.1rem;
-  }
-  
-  .therapy-box, .disorders-box {
-    min-width: 100%;
-  }
-  
-  .box-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .cta-section {
-    padding: 2rem 1rem;
-  }
-  
-  .logo {
-    height: 60px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  .therapy-list li, .disorders-list li {
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  .cta-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.therapy-box, .disorders-box, .cta-section {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-.disorders-box {
-  animation-delay: 0.2s;
-}
-
-.cta-section {
-  animation-delay: 0.4s;
+  transform: translateY(-5px) rotate(10deg);
 }
