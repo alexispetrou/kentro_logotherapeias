@@ -124,7 +124,7 @@ ul {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    min-height: 400px;
+    height: 100px;
 }
 
 @keyframes gradientBG {
