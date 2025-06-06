@@ -1,51 +1,74 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-	<link rel="icon" type="image/x-icon" href="ic.ico">
-<meta name="viewport" content="width=device-width, initial-scale=0.75">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Κέντρο λογοθεραπείας Χρύσα Στρούζα</title>
-    <link rel="stylesheet" type="text/css" href="place.css">
+    <title>Ο Χώρος μας | Κέντρο Λογοθεραπείας Χρύσα Στρούζα</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="ic.ico">
+    <link rel="stylesheet" type="text/css" href="place.css"> 
 </head>
 <body>
-    <div class="top-panel">
-       <a href="index.html"><i class="fa-solid fa-door-open"></i> Αρχική</a>
-        <a href="info.html"><i class="fa-solid fa-circle-info"></i> Πληροφορίες</a>
-        <a href="team.html"><i class="fa-solid fa-people-group"></i> Η ομάδα μας</a>
-		<a href="place.html"><i class="fa-solid fa-images"></i> Ο χώρος μας</a>
-        <a href="contact.html"><i class="fa-solid fa-phone"></i> Επικοινωνία</a>
-    </div>
-     <img src="logo.jpg" alt="Logo" class="top-left-image">
-    
+    <nav class="top-panel">
+        <div class="container">
+            <img src="logo.jpg" alt="Logo" class="logo"> <div class="nav-links">
+                <a href="index.html"><i class="fa-solid fa-home"></i> Αρχική</a>
+                <a href="info.html"><i class="fa-solid fa-circle-info"></i> Πληροφορίες</a>
+                <a href="team.html"><i class="fa-solid fa-people-group"></i> Η ομάδα μας</a>
+                <a href="place.html" ><i class="fa-solid fa-images"></i> Ο χώρος μας</a> <a href="contact.html"><i class="fa-solid fa-phone"></i> Επικοινωνία</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="content">
-        <h1>Εικόνες του κέντρου</h1>
-        <br><br>
-        <div class="box-container">
-    <div class="info-box">
-      <h2>Χώρος αναμονής</h2>
-    </div>
-	<div class="info-box">
-      <h2>Αίθουσα λογοθεραπείας</h2>
-    </div>
-	<div class="info-box">
-      <h2>Αίθουσα εργοθεραπείας</h2>
-    </div>
-	<div class="deals-box">
-	  <img class="image" src="pl2.jpg" alt="Telecom Service">
-    </div>
-	<div class="deals-box">
-	  <img class="image" src="pl1.jpg" alt="Telecom Service">
-    </div>
-	<div class="deals-box">
-	  <img class="image" src="pl1.jpg" alt="Telecom Service">
-    </div>
-	
-	
-    
-    
-    </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Εικόνες του κέντρου</h1>
+
+        </div>
+    </section>
+
+    <main class="content">
+        <div class="container">
+            <div class="gallery-container"> <div class="place-title-box">
+                    <h2>Χώρος αναμονής</h2>
+                </div>
+                <div class="place-image-box">
+                    <img src="pl2.jpg" alt="Χώρος Αναμονής" class="place-image">
+                </div>
+
+                <div class="place-title-box">
+                    <h2>Αίθουσα λογοθεραπείας</h2>
+                </div>
+                <div class="place-image-box">
+                    <img src="pl1.jpg" alt="Αίθουσα Λογοθεραπείας" class="place-image">
+                </div>
+
+                <div class="place-title-box">
+                    <h2>Αίθουσα εργοθεραπείας</h2>
+                </div>
+                <div class="place-image-box">
+                    <img src="pl3.jpg" alt="Αίθουσα Εργοθεραπείας" class="place-image">
+                </div>
+                </div>
+        </div>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h3>Έχετε απορίες; Επικοινωνήστε μαζί μας!</h3>
+            <a href="contact.html" class="cta-button">Επικοινωνία <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2023 Κέντρο Θεραπειών</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
