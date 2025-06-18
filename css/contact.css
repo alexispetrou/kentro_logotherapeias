@@ -1,0 +1,455 @@
+/* ===== MODERN AESTHETIC ===== */
+:root {
+    --deep-blue: #1a3a6e;
+    --vibrant-blue: #3a7bd5;
+    --warm-orange: #ff7a45;
+    --soft-teal: #00d2ff;
+    --light-cream: #f8f4e9;
+    --pure-white: #ffffff;
+    --dark-charcoal: #2a2a2a;
+    --box-shadow-intense: 0 8px 30px rgba(0, 0, 0, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-cream);
+    color: var(--dark-charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Το γενικό .container παραμένει για το κεντράρισμα του κύριου περιεχομένου */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* ===== DYNAMIC NAVIGATION ===== */
+.top-panel {
+    background: linear-gradient(135deg, var(--deep-blue) 0%, var(--vibrant-blue) 100%);
+    box-shadow: var(--box-shadow-intense);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.top-panel .container {
+    max-width: 100%; /* Το container του top-panel να πιάνει όλο το πλάτος */
+    margin: 0; /* Μηδενίζουμε το margin για να κολλήσει στις άκρες του parent */
+    padding: 0 2rem; /* Εδώ βάζουμε το οριζόντιο padding για όλο το περιεχόμενο του top-panel */
+    justify-content: flex-start; /* Όλα τα στοιχεία να ξεκινούν από αριστερά */
+    gap: 3rem; /* Απόσταση μεταξύ λογοτύπου και nav-links */
+    flex-wrap: wrap; /* Για να πέφτουν κάτω σε μικρότερες οθόνες */
+}
+
+.top-panel .logo {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem; /* Η απόσταση μεταξύ των links */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-panel a {
+    color: var(--pure-white);
+    font-weight: 600;
+    padding: 1rem 0;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.05rem;
+    transition: var(--transition-smooth);
+}
+
+.top-panel a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 4px;
+    background: var(--warm-orange);
+    transition: var(--transition-smooth);
+}
+
+.top-panel a:hover::before {
+    width: 100%;
+}
+
+.top-panel .active {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-bottom: 4px solid var(--warm-orange);
+}
+
+/* ===== HERO WITH ANIMATED GRADIENT (Πράσινο) ===== */
+.hero {
+    background: linear-gradient(-45deg, #28a745, #20c997, #28a745); /* Το πράσινο gradient */
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    color: var(--pure-white);
+    padding: 5rem 0;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1.5rem;
+}
+
+.tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* ===== CONTACT CONTENT STYLING ===== */
+.content {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.box-container {
+    display: flex;
+    gap: 2rem;
+    margin: -3rem auto 5rem; /* Μετακινεί τα κουτιά ελαφρώς προς τα πάνω */
+    max-width: 1000px;
+    padding: 0 2rem;
+    flex-wrap: wrap;
+    justify-content: center; /* Κεντράρει τα κουτιά στο container του */
+}
+
+.contact-info-box {
+    flex: 1;
+    min-width: 300px;
+    background: var(--pure-white);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: var(--box-shadow-intense);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ευθυγράμμιση αριστερά */
+    text-align: left; /* Ευθυγράμμιση κειμένου αριστερά */
+}
+
+/* Εφέ λάμψης για τα κουτιά */
+.contact-info-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Εφέ hover για τα κουτιά */
+.contact-info-box:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info-box h2 {
+    font-size: 1.8rem;
+    color: var(--deep-blue);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 2;
+}
+
+.contact-info-box h2 i {
+    font-size: 1.5em; /* Μεγαλύτερο εικονίδιο τίτλου */
+    color: var(--vibrant-blue);
+}
+
+.contact-info-box p {
+    font-size: 1.1rem;
+    color: var(--dark-charcoal);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 2;
+}
+
+.contact-info-box p i {
+    color: var(--vibrant-blue);
+    font-size: 1.1em;
+}
+
+.contact-info-box p span {
+    font-weight: 600; /* Έντονο το περιεχόμενο (π.χ., ώρες, τηλέφωνα) */
+    color: var(--deep-blue);
+}
+
+.contact-info-box .address-heading {
+    margin-top: 1.5rem; /* Απόσταση από το email */
+    margin-bottom: 0.5rem;
+}
+
+.contact-info-box .address-text {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.contact-info-box .map-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-smooth);
+    z-index: 2;
+}
+
+.contact-info-box .map-image:hover {
+    transform: scale(1.02);
+}
+
+/* ===== PULSING CTA BUTTON ===== */
+.cta-section {
+    background-color: var(--deep-blue);
+    padding: 4rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.cta-section .container {
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cta-section h3 {
+    color: var(--pure-white);
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--warm-orange), #ff9a5a);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 30px rgba(255, 122, 69, 0.4);
+    transition: var(--transition-smooth);
+    animation: pulse 2s infinite;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 122, 69, 0.6);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== GLASS MORPHISM FOOTER ===== */
+.main-footer {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.main-footer .container {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--vibrant-blue), var(--soft-teal));
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem;
+    transition: var(--transition-smooth);
+    font-size: 1.5rem;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) rotate(10deg);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1.3rem;
+    }
+
+    .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info-box {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .top-panel .container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .top-panel .logo {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links {
+        justify-content: center;
+        width: 100%;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-panel .container {
+        padding: 1rem;
+    }
+
+    .top-panel a {
+        padding: 0.8rem 0;
+        font-size: 0.9rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.1rem;
+    }
+
+    .cta-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .main-footer .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .contact-info-box {
+        padding: 1.5rem;
+    }
+
+    .contact-info-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-info-box p, .contact-info-box .address-text {
+        font-size: 0.9rem;
+    }
+
+    .top-panel a {
+        font-size: 0.8rem;
+    }
+
+    .nav-links {
+        gap: 0.5rem;
+    }
+}
