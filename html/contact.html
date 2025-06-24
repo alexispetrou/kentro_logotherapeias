@@ -4,75 +4,796 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Επικοινωνία | Κέντρο Λογοθεραπείας Χρύσα Στρούζα</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="ic.ico">
-    <link rel="stylesheet" type="text/css" href="../css/contact.css"> 
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            transition: var(--transition);
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+            padding: 0.5rem 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            transition: var(--transition);
+        }
+
+        header.scrolled .logo {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link i {
+            margin-right: 0.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero */
+        .hero {
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.9), rgba(58, 12, 163, 0.9));
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../pictures/hero-bg.jpg') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Info */
+        .contact-section {
+            background-color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .contact-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-card h2 i {
+            color: var(--secondary);
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .contact-info i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .contact-info span {
+            font-weight: 500;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .map-container:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Hours Table */
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .hours-table td {
+            padding: 0.8rem 0;
+        }
+
+        .hours-table td:last-child {
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .closed {
+            color: var(--secondary);
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .hero {
+                min-height: 350px;
+                height: 40vh;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="top-panel">
-        <div class="container">
-            <img src="../pictures/logo.jpg" alt="Logo" class="logo"> <div class="nav-links"> <a href="../html/laptop.html"><i class="fa-solid fa-home"></i> Αρχική</a>
-                <a href="../html/info.html"><i class="fa-solid fa-circle-info"></i> Πληροφορίες</a>
-                <a href="../html/team.html"><i class="fa-solid fa-people-group"></i> Ομάδα</a>
-                <a href="../html/place.html"><i class="fa-solid fa-images"></i> Χώρος</a>
-                <a href="../html/contact.html"><i class="fa-solid fa-phone"></i> Επικοινωνία</a>
-            </div>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="../html/laptop.html">
+                <img src="../pictures/logo.jpg" alt="Κέντρο Θεραπειών" class="logo">
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links">
+                <a href="../html/laptop.html" class="nav-link"><i class="fas fa-home"></i> Αρχική</a>
+                <a href="../html/info.html" class="nav-link"><i class="fas fa-info-circle"></i> Πληροφορίες</a>
+                <a href="../html/team.html" class="nav-link"><i class="fas fa-users"></i> Ομάδα</a>
+                <a href="../html/place.html" class="nav-link"><i class="fas fa-images"></i> Χώρος</a>
+                <a href="../html/contact.html" class="nav-link active"><i class="fas fa-phone-alt"></i> Επικοινωνία</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Πώς να έρθετε σε επαφή μαζί μας</h1>
+            <div class="hero-content animate">
+                <h1 class="hero-title">Πώς να έρθετε σε επαφή μαζί μας</h1>
+            </div>
         </div>
     </section>
 
-    <main class="content">
+    <!-- Contact Section -->
+    <section class="section contact-section">
         <div class="container">
-            <div class="box-container">
-                <div class="contact-info-box hours-box">
-                    <h2><i class="fa-solid fa-clock"></i> Ώρες λειτουργίας</h2>
-                    <p>ΔΕΥΤΕΡΑ: <span>9:00π.μ. - 9:00μ.μ.</span></p>
-                    <p>ΤΡΙΤΗ: <span>11:00π.μ. - 9:00μ.μ.</span></p>
-                    <p>ΤΕΤΑΡΤΗ: <span>11:00π.μ. - 9:00μ.μ.</span></p>
-                    <p>ΠΕΜΠΤΗ: <span>11:00π.μ. - 9:00μ.μ.</span></p>
-                    <p>ΠΑΡΑΣΚΕΥΗ: <span>11:00π.μ. - 9:00μ.μ.</span></p>
-                    <p>ΣΑΒΒΑΤΟ: <span>ΚΛΕΙΣΤΑ</span></p>
-                    <p>ΚΥΡΙΑΚΗ: <span>ΚΛΕΙΣΤΑ</span></p>
+            <div class="contact-grid">
+                <!-- Hours Card -->
+                <div class="contact-card animate delay-1">
+                    <h2><i class="fas fa-clock"></i> Ώρες λειτουργίας</h2>
+                    
+                    <table class="hours-table">
+                        <tr>
+                            <td>ΔΕΥΤΕΡΑ:</td>
+                            <td><span>9:00π.μ. - 9:00μ.μ.</span></td>
+                        </tr>
+                        <tr>
+                            <td>ΤΡΙΤΗ:</td>
+                            <td><span>11:00π.μ. - 9:00μ.μ.</span></td>
+                        </tr>
+                        <tr>
+                            <td>ΤΕΤΑΡΤΗ:</td>
+                            <td><span>11:00π.μ. - 9:00μ.μ.</span></td>
+                        </tr>
+                        <tr>
+                            <td>ΠΕΜΠΤΗ:</td>
+                            <td><span>11:00π.μ. - 9:00μ.μ.</span></td>
+                        </tr>
+                        <tr>
+                            <td>ΠΑΡΑΣΚΕΥΗ:</td>
+                            <td><span>11:00π.μ. - 9:00μ.μ.</span></td>
+                        </tr>
+                        <tr>
+                            <td>ΣΑΒΒΑΤΟ:</td>
+                            <td class="closed">ΚΛΕΙΣΤΑ</td>
+                        </tr>
+                        <tr>
+                            <td>ΚΥΡΙΑΚΗ:</td>
+                            <td class="closed">ΚΛΕΙΣΤΑ</td>
+                        </tr>
+                    </table>
                 </div>
                 
-                <div class="contact-info-box details-box">
-                    <h2><i class="fa-solid fa-address-book"></i> Στοιχεία επικοινωνίας</h2>
-                    <p><i class="fa-solid fa-mobile-alt"></i> Κινητό τηλέφωνο: <span>6934252820</span></p>
-                    <p><i class="fa-solid fa-phone-alt"></i> Σταθερό τηλέφωνο: <span>2130429681</span></p>
-                    <p><i class="fa-solid fa-envelope"></i> Email: <span>xrysona5@yahoo.gr</span></p>
-                    <h2 class="address-heading"><i class="fa-solid fa-location-dot"></i> Διεύθυνση: </h2>
-                    <p class="address-text">Ηλιουπόλεως 62, Αθήνα 116 31</p>
-                    <img class="map-image" src="../pictures/maps.png" alt="Χάρτης">
+                <!-- Contact Details Card -->
+                <div class="contact-card animate delay-2">
+                    <h2><i class="fas fa-address-book"></i> Στοιχεία επικοινωνίας</h2>
+                    
+                    <div class="contact-info">
+                        <p>
+                            <i class="fas fa-mobile-alt"></i> 
+                            <span>Κινητό τηλέφωνο:</span> 6934252820
+                        </p>
+                        <p>
+                            <i class="fas fa-phone-alt"></i> 
+                            <span>Σταθερό τηλέφωνο:</span> 2130429681
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i> 
+                            <span>Email:</span> xrysona5@yahoo.gr
+                        </p>
+                    </div>
+                    
+                    <h2><i class="fas fa-location-dot"></i> Διεύθυνση</h2>
+                    <p>Ηλιουπόλεως 62, Αθήνα 116 31</p>
+                    
+                    <div class="map-container">
+                        <img src="../pictures/maps.png" alt="Χάρτης τοποθεσίας">
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
-    
-    <section class="cta-section">
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
         <div class="container">
-            <h3>Έχετε απορίες; Επικοινωνήστε μαζί μας!</h3>
-            <a href="../html/contact.html" class="cta-button">Επικοινωνία <i class="fa-solid fa-arrow-right"></i></a>
+            <h2 class="cta-title animate">Έχετε απορίες;</h2>
+            <p class="animate delay-1">Επικοινωνήστε μαζί μας σήμερα και θα σας απαντήσουμε με χαρά!</p>
+            <a href="tel:6934252820" class="cta-btn animate delay-2">Καλέστε μας τώρα <i class="fas fa-phone"></i></a>
         </div>
     </section>
 
-    <footer class="main-footer">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <p>&copy; 2023 Κέντρο Θεραπειών</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/xrhstosdespoudis/about"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/chrysastrouza/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/%CE%BA%CE%AD%CE%BD%CF%84%CF%81%CE%BF-%CE%B5%CE%B9%CE%B4%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CE%B9%CF%8E%CE%BD-%CF%87%CF%81%CF%8D%CF%83%CE%B1-%CF%83%CF%84%CF%81%CE%BF%CF%8D%CE%B6%CE%B1/?viewAsMember=true"><i class="fab fa-linkedin"></i></i></a>
-                 <a href="mailto:alexisptr204@gmail.com" target="_blank">
-                    <i class="fas fa-envelope"></i>
-                </a>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="../pictures/logo.jpg" alt="Κέντρο Θεραπειών" class="footer-logo">
+                    <p>Το Κέντρο Θεραπειών προσφέρει εξειδικευμένες υπηρεσίες για παιδιά και ενήλικες με αναπτυξιακές διαταραχές και μαθησιακές δυσκολίες.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/xrhstosdespoudis/about" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/chrysastrouza/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/%CE%BA%CE%AD%CE%BD%CF%84%CF%81%CE%BF-%CE%B5%CE%B9%CE%B4%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CE%B9%CF%8E%CE%BD-%CF%87%CF%81%CF%8D%CF%83%CE%B1-%CF%83%CF%84%CF%81%CE%BF%CF%8D%CE%B6%CE%B1/?viewAsMember=true" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:alexisptr204@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Σύνδεσμοι</h3>
+                    <ul>
+                        <li><a href="../html/laptop.html"><i class="fas fa-chevron-right"></i> Αρχική</a></li>
+                        <li><a href="../html/info.html"><i class="fas fa-chevron-right"></i> Πληροφορίες</a></li>
+                        <li><a href="../html/team.html"><i class="fas fa-chevron-right"></i> Ομάδα</a></li>
+                        <li><a href="../html/place.html"><i class="fas fa-chevron-right"></i> Χώρος</a></li>
+                        <li><a href="../html/contact.html"><i class="fas fa-chevron-right"></i> Επικοινωνία</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-title">Επικοινωνία</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Ηλιουπόλεως 62, Αθήνα 116 31</li>
+                        <li><i class="fas fa-phone"></i> 2130429681</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6934252820</li>
+                        <li><i class="fas fa-envelope"></i> xrysona5@yahoo.gr</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Κέντρο Θεραπειών Χρύσα Στρούζα. Όλα τα δικαιώματα διατηρούνται.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.animate');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Set active nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 </html>
