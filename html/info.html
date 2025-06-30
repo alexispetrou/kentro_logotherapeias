@@ -4,60 +4,713 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Πληροφορίες | Κέντρο Λογοθεραπείας Χρύσα Στρούζα</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="ic.ico">
-    <link rel="stylesheet" type="text/css" href="../css/info.css"> 
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            color: var(--primary-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            transition: var(--transition);
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: var(--dark);
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link i {
+            margin-right: 0.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Page Hero */
+        .page-hero {
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.9), rgba(58, 12, 163, 0.9));
+            color: white;
+            margin-top: 70px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../pictures/hero-bg.jpg') no-repeat center center/cover;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .page-hero-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .page-hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        /* Info Content */
+        .info-content {
+            background-color: white;
+        }
+
+        .info-box {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            height: 80px;
+            width: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .service-list {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .service-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-list i {
+            color: var(--secondary);
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 4rem 0;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            opacity: 0.8;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-links i {
+            font-size: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .page-hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-150%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .page-hero {
+                min-height: 300px;
+                height: 40vh;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .info-box {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   <nav class="top-panel">
-        <div class="container">
-            <img src="../pictures/logo.jpg" alt="Logo" class="logo"> <div class="nav-links"> <a href="../html/laptop.html"><i class="fa-solid fa-home"></i> Αρχική</a>
-                <a href="../html/info.html"><i class="fa-solid fa-circle-info"></i> Πληροφορίες</a>
-                <a href="../html/team.html"><i class="fa-solid fa-people-group"></i> Ομάδα</a>
-                <a href="../html/place.html"><i class="fa-solid fa-images"></i> Χώρος</a>
-                <a href="../html/contact.html"><i class="fa-solid fa-phone"></i> Επικοινωνία</a>
-            </div>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="../html/laptop.html">
+                <img src="../pictures/logo.jpg" alt="Κέντρο Θεραπειών" class="logo">
+            </a>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links">
+                <a href="../html/laptop.html" class="nav-link"><i class="fas fa-home"></i> Αρχική</a>
+                <a href="../html/info.html" class="nav-link active"><i class="fas fa-info-circle"></i> Πληροφορίες</a>
+                <a href="../html/team.html" class="nav-link"><i class="fas fa-users"></i> Ομάδα</a>
+                <a href="../html/place.html" class="nav-link"><i class="fas fa-images"></i> Χώρος</a>
+                <a href="../html/contact.html" class="nav-link"><i class="fas fa-phone-alt"></i> Επικοινωνία</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero">
+    <!-- Page Hero -->
+    <section class="page-hero">
         <div class="container">
-            <h1>Μερικές πληροφορίες για εμάς και τι προσφέρουμε</h1>
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">Πληροφορίες</h1>
+                <p>Μερικές πληροφορίες για εμάς και τι προσφέρουμε</p>
+            </div>
         </div>
     </section>
 
-    <main class="content">
+    <!-- Main Content -->
+    <section class="section info-content">
         <div class="container">
-            <div class="box-container"> 
-                <div class="info-box">
-                    <p>
-                        Το Κέντρο Ειδικών Θεραπειών Χρύσα Στρούζα είναι ένας σύγχρονος χώρος αφιερωμένος στην υποστήριξη παιδιών και ενηλίκων που αντιμετωπίζουν δυσκολίες στην επικοινωνία, τη μάθηση και την καθημερινή λειτουργικότητα. Με γνώμονα την εξατομικευμένη προσέγγιση και την επιστημονική κατάρτιση, παρέχουμε υπηρεσίες λογοθεραπείας, εργοθεραπείας, ψυχολογικής υποστήριξης, εργαστήρια δεξιοτήτων και συμβουλευτική γονέων. Εξειδικεύομαστε σε ένα ευρύ φάσμα διαταραχών, όπως διαταραχές άρθρωσης, φωνολογικά προβλήματα, δυσλεξία, τραυλισμό, μαθησιακές δυσκολίες, δυσφαγία, οισοφαγική ομιλία, αφασία και δυσπραξίες. Στόχος μας είναι να βοηθήσουμε κάθε άτομο να ξεπεράσει τις δυσκολίες του, να ενισχύσει την αυτοπεποίθησή του και να αποκτήσει τα απαραίτητα εφόδια για μια πιο λειτουργική και ποιοτική ζωή.
-                    </p>
+            <div class="info-box">
+                <p>
+                    Το Κέντρο Ειδικών Θεραπειών Χρύσα Στρούζα είναι ένας σύγχρονος χώρος αφιερωμένος στην υποστήριξη παιδιών και ενηλίκων που αντιμετωπίζουν δυσκολίες στην επικοινωνία, τη μάθηση και την καθημερινή λειτουργικότητα. Με γνώμονα την εξατομικευμένη προσέγγιση και την επιστημονική κατάρτιση, παρέχουμε υπηρεσίες λογοθεραπείας, εργοθεραπείας, ψυχολογικής υποστήριξης, εργαστήρια δεξιοτήτων και συμβουλευτική γονέων.
+                </p>
+                
+                <p>
+                    Εξειδικεύομαστε σε ένα ευρύ φάσμα διαταραχών, όπως διαταραχές άρθρωσης, φωνολογικά προβλήματα, δυσλεξία, τραυλισμό, μαθησιακές δυσκολίες, δυσφαγία, οισοφαγική ομιλία, αφασία και δυσπραξίες. Στόχος μας είναι να βοηθήσουμε κάθε άτομο να ξεπεράσει τις δυσκολίες του, να ενισχύσει την αυτοπεποίθησή του και να αποκτήσει τα απαραίτητα εφόδια για μια πιο λειτουργική και ποιοτική ζωή.
+                </p>
+            </div>
+
+            <h2 class="section-title">Οι Υπηρεσίες μας</h2>
+            
+            <div class="services-grid">
+                <!-- Therapy Services -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-comment-medical"></i>
+                        </div>
+                        <h3 class="service-title">Λογοθεραπεία</h3>
+                        <p>Εξειδικευμένες υπηρεσίες λογοθεραπείας για όλες τις ηλικίες.</p>
+                        
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Διαταραχές άρθρωσης</li>
+                            <li><i class="fas fa-check"></i> Φωνολογικά προβλήματα</li>
+                            <li><i class="fas fa-check"></i> Τραυλισμός</li>
+                            <li><i class="fas fa-check"></i> Αφασία</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Learning Support -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="service-title">Μαθησιακή Υποστήριξη</h3>
+                        <p>Εξατομικευμένα προγράμματα για μαθησιακές δυσκολίες.</p>
+                        
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Δυσλεξία</li>
+                            <li><i class="fas fa-check"></i> Δυσγραφία</li>
+                            <li><i class="fas fa-check"></i> Δυσκαλκουλία</li>
+                            <li><i class="fas fa-check"></i> Διαταραχές προσοχής</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Other Services -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="service-title">Άλλες Υπηρεσίες</h3>
+                        <p>Ολοκληρωμένη θεραπευτική προσέγγιση.</p>
+                        
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Εργοθεραπεία</li>
+                            <li><i class="fas fa-check"></i> Ψυχολογική υποστήριξη</li>
+                            <li><i class="fas fa-check"></i> Εργαστήρια δεξιοτήτων</li>
+                            <li><i class="fas fa-check"></i> Συμβουλευτική γονέων</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <section class="cta-section">
+    <!-- CTA Section -->
+    <section class="cta">
         <div class="container">
-            <h3>Έχετε απορίες; Επικοινωνήστε μαζί μας!</h3>
-            <a href="../html/contact.html" class="cta-button">Επικοινωνία <i class="fa-solid fa-arrow-right"></i></a>
+            <h2 class="cta-title">Έχετε απορίες;</h2>
+            <p class="cta-text">Επικοινωνήστε μαζί μας σήμερα για να μάθετε περισσότερα για τις υπηρεσίες μας και πώς μπορούμε να σας βοηθήσουμε.</p>
+            <a href="../html/contact.html" class="cta-btn">Επικοινωνία <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
-    <footer class="main-footer">
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <p>&copy; 2023 Κέντρο Θεραπειών</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/xrhstosdespoudis/about"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/chrysastrouza/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/company/%CE%BA%CE%AD%CE%BD%CF%84%CF%81%CE%BF-%CE%B5%CE%B9%CE%B4%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CE%B9%CF%8E%CE%BD-%CF%87%CF%81%CF%8D%CF%83%CE%B1-%CF%83%CF%84%CF%81%CE%BF%CF%8D%CE%B6%CE%B1/?viewAsMember=true"><i class="fab fa-linkedin"></i></i></a>
-                 <a href="mailto:alexisptr204@gmail.com" target="_blank">
-                    <i class="fas fa-envelope"></i>
-                </a>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="../pictures/logo.jpg" alt="Κέντρο Θεραπειών" class="footer-logo">
+                    <p>Το Κέντρο Θεραπειών προσφέρει εξειδικευμένες υπηρεσίες για παιδιά και ενήλικες με αναπτυξιακές διαταραχές και μαθησιακές δυσκολίες.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/xrhstosdespoudis/about" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/chrysastrouza/" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/%CE%BA%CE%AD%CE%BD%CF%84%CF%81%CE%BF-%CE%B5%CE%B9%CE%B4%CE%B9%CE%BA%CF%8E%CE%BD-%CE%B8%CE%B5%CF%81%CE%B1%CF%80%CE%B5%CE%B9%CF%8E%CE%BD-%CF%87%CF%81%CF%8D%CF%83%CE%B1-%CF%83%CF%84%CF%81%CE%BF%CF%8D%CE%B6%CE%B1/?viewAsMember=true" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:alexisptr204@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 class="footer-title">Σύνδεσμοι</h3>
+                    <ul>
+                        <li><a href="../html/laptop.html"><i class="fas fa-chevron-right"></i> Αρχική</a></li>
+                        <li><a href="../html/info.html"><i class="fas fa-chevron-right"></i> Πληροφορίες</a></li>
+                        <li><a href="../html/team.html"><i class="fas fa-chevron-right"></i> Ομάδα</a></li>
+                        <li><a href="../html/place.html"><i class="fas fa-chevron-right"></i> Χώρος</a></li>
+                        <li><a href="../html/contact.html"><i class="fas fa-chevron-right"></i> Επικοινωνία</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3 class="footer-title">Επικοινωνία</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Ηλιουπόλεως 62, Αθήνα 116 31</li>
+                        <li><i class="fas fa-phone"></i> 2130429681</li>
+                        <li><i class="fas fa-mobile-alt"></i> 6934252820</li>
+                        <li><i class="fas fa-envelope"></i> xrysona5@yahoo.gr</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Κέντρο Θεραπειών Χρύσα Στρούζα. Όλα τα δικαιώματα διατηρούνται.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Animation on Scroll
+        const animateElements = document.querySelectorAll('.service-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        animateElements.forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
